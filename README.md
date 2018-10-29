@@ -92,3 +92,22 @@ Tags are completely arbitrary and used only to provide additional search & filte
 ```javascript
 {"title":"Purple Trees","file":"https://kosmetista.ru/uploads/images/07/04/95/2015/06/11/82c72c.jpg","type":"images"}
 ```
+
+## Frontend Design
+If your frontend will manage multiple MSF items at the same time, it is recommended that you assign an ID to each MSF item and store them in a library.  That way objects in your frontend just need to reference an item ID in order to know which meta data is assigned to them.
+
+Note that, in the **deep variant of MSF**, an item ID is **included** for you in the shortcut's meta data.
+
+The suggested way to store your items in a library object is as follows (replacing *ITEM_ID* with the ID you assign to the item and *ITEM_DATA_OBJECT* with the actual meta data for the item):
+```javascript
+var library = {
+  items:
+  {
+    ITEM_ID: ITEM_DATA_OBJECT,
+    ITEM_ID: ITEM_DATA_OBJECT,
+    ITEM_ID: ITEM_DATA_OBJECT,
+    ITEM_ID: ITEM_DATA_OBJECT,
+    ITEM_ID: ITEM_DATA_OBJECT
+  }
+};
+```
