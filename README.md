@@ -114,3 +114,6 @@ var library = {
   }
 };
 ```
+
+## Texture Image Caching
+It is recommended that your frontend cache textures between sessions, especially textures that are generated from web URLs.  This will drastically reduce the amount of network calls your frontend needs to make and also insures that the shortcut looks right even if the user's internet dies or the original image source no longer exists.
