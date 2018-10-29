@@ -35,9 +35,37 @@ All feild values are strings.  Frontends should support at least 1024 characters
 ## Security & Privacy
 When a user shares a meta shortcut that has references to local files in its meta data, it is common practice to conceal the user's local folder structure by removing all but the file name from the field's value.
 
+## Texture Channel Priority
+To avoid redundant data values, MSF expects frontends to use a fallback / priority system for generating rich presence for meta shortcuts inside of their 2D/3D environment.  This is especially important when dealing with texture channels.  For example, if a meta shortcut contains **only** the FILE field, then the frontend should automatically attempt to use the FILE value as the screen & marquee textures used on the shortcuts representation in the 2D/3D environment.  That way the best possible rich presence is generated utilizing what ever meta data the shortcut has to offer.
+
+The suggested texture channel priority is as follows:
+- **screen texture channel**: (1) screen value, (2) preview value, (3) file value, (4) marquee value
+- **marquee texture channel**: (1) marquee value, (2) preview value, (3) file value, (4) screen value
+
+## Suggested In-Game Interactive Preview Priority
+Frontends can choose to provide interactive in-game previews for shortcuts if they wish.  If they do this, it is **HIGHLY RECOMMENDED** that they also implement an object select system so that the user can indicate which in-game shortcuts they want to have active interactive previews running on at any given time.  Most shortcuts will be in their inactive state, merely showing their static screen & marquee texture channels on them.  Only the objects that the user is interested in show interactive in-game previews.
+
+You are free to determine what the best in-game interactive preview priority is for your specific frontend.  Below is a general suggestion on what you might want to prioritize:
+- **stream** field, if valid.
+- **preview** field, if valid.
+- **file** field, if valid.
+- **screen** field, if valid.
+- **marqruee** field, if valid.
+- **reference** field, if valid.
+
+Note that you may also want to alter priority based on keywords found in those field values, such as "youtube.com" or "netflix.com".  How you prioritize your in-game interactive previews is entirely up to you.  Do what ever makes sense for your frontend.
+
 ## Types
 Metaverse types are arbitrary.  Users can create their own "types" and name them what ever they want.  However, here are some standard type names you are likely to encounter:
 - 3do, 3ds, 32x, arcade, atari5200, books, cards, comics, ds, gameboy, gamecube, gamegear, gba, gbc, genesis, images, maps, megadrive, movies, music, n64, neogeo, nes, pc, pinball, ps, ps2, ps3, ps4, psp, sms, snes, text, tv, twitch, videos, websites, wii, wiiu, youtube
+
+## Open-With Apps
+In standard flat MSF, the **app** field contains the name of a program that is assumed to be required to open the shortcut with.  This is an arbitrary value that is usually absent or just an empty string.  Common values for this field include the names of emulators, such as Project 64 or SNES9x.  In standard flat MSF, this **app** field is merely a hint to the user that they might need additional software to launch the shortcut.  (Note that in the deep variant of MSF, the **app** field is able to play a much more functional role.)
+
+When an **app** field is absent or an empty string, it means the shortcut needs no special handling.  In other words, if you pasted the shortcut target into the Windows Run dialoge, it would open successfully in a native app automatically.
+
+## Tags
+Tags are completely arbitrary and used only to provide additional search & filter posibilities to your frontend.
 
 ## JSON Examples
 ```javascript
