@@ -70,7 +70,11 @@ When an **app** field is absent or an empty string, it means the shortcut needs 
 ## Tags
 Tags are completely arbitrary and used only to provide additional search & filter posibilities to your frontend.
 
-## JSON Examples
+## Live 2D Frontend Example
+Here is a live example of a frontend using MSF items encoded with JSON.  Just paste in the JSON examples (listed below in the *MSF JSON Examples* section) and hit enter.
+https://smsithlord.github.io/MetaShortcutFormat/json_frontend.html
+
+## MSF JSON Examples
 ```javascript
 {"title":"Rogue One: A Star Wars Story (2016)","file":"Rogue One - A Star Wars Story (2016).mp4","screen":"http://image.tmdb.org/t/p/original/tZjVVIYXACV4IIIhXeIM59ytqwS.jpg","marquee":"http://image.tmdb.org/t/p/original/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg","preview":"https://www.youtube.com/watch?v=wxL8bVJhXCM","stream":"http://www.netflix.com/watch/80108239","reference":"http://www.themoviedb.org/movie/330459","description":"A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.","type":"movies"}
 ```
