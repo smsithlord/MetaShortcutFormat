@@ -33,7 +33,7 @@ Meta shortcuts hold plain-text meta data only.  No binary data.  The only requir
 The MSF can be encoded by any appropriate method (JSON, XML, etc.) as long as the meta data is retained.  The most basic MSF is flat & contains only plain-text string fields.  Note that there is also a deep variant that provides extended support for the OPEN WITH and TYPE fields as well as a way to specify what kind of 3D model the shortcut would like to be displayed on, but the specification in this document is for the standard flat variant only.
 
 ## Values
-All feild values are strings.  Frontends should support at least 1024 characters in each field, but may support much more if they wish.  The following fields expect plain-text: Title, Description, Tags, Type, Open With.  Conversly, the other fields expect either a local file target or a URL: File, Screen, Marquee, Preview, Stream, Download, Reference.  If a particular field does not exist in a shortcut, it is assumed to be the default value of an empty string.
+All feild values are strings.  Frontends should support at least 2048 characters in each field, but may support much more if they wish.  The following fields expect plain-text: Title, Description, Tags, Type, Open With.  Conversly, the other fields expect either a local file target or a URL: File, Screen, Marquee, Preview, Stream, Download, Reference.  If a particular field does not exist in a shortcut, it is assumed to be the default value of an empty string.
 
 ## Security & Privacy
 When a user shares a meta shortcut that has references to local files in its meta data, it is common practice to conceal the user's local folder structure by removing all but the file name from the field's value.
