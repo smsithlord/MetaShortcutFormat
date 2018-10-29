@@ -14,6 +14,9 @@
 - **type**: (string) the name of a type associated with this shortcut.
 
 ## Preface
+Everything - games, movies, music, books, links - everything on your PC, & everything on the internet, can be represented as a shortcut.  They are like a roadmap to the data you want.
+Your computer goes there & fetches the data for you.  Regular shortcuts look like app icons, text links, or bookmark buttons.  Meta Shortcut Format exists to facilitate a minimalistic rich presence for shortcuts, especially when used in 2D or 3D environments.
+
 The purpose of this specification is so other frontends can support the type of **META SHORTCUTS** seen in Anarchy Arcade.  By treating shortcuts as distinct objects with fields as specified in this document, any capable 3D or 2D engine can add perfect metaverse browser functionality.
 
 ## Purpose
