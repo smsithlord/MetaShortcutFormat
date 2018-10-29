@@ -1,0 +1,176 @@
+<html>
+	<head>
+		<title>JSON MSF Frontend</title>
+		<script>
+			function processMSF()
+			{
+				var item = JSON.parse(document.querySelector("#jsonbox").value);
+
+				// now display the item's meta data to the user
+				document.querySelector("#title").innerHTML = item.title;
+				document.querySelector("#type").innerHTML = (!!item.type) ? item.type : "other";
+				document.querySelector("#description").innerHTML = (!!item.description) ? item.description : "";
+
+				var screenElem = document.querySelector("#screen");
+				screenElem.classList.add("hidden");
+				if( !!item.screen )
+					screenElem.src = item.screen;
+
+				var marqueeElem = document.querySelector("#marquee");
+				marqueeElem.classList.add("hidden");
+				if( !!item.marquee )
+					marqueeElem.src = item.marquee;
+
+				var previewElem = document.querySelector("#preview");
+				previewElem.classList.add("hidden");
+				if( !!item.preview && item.preview !== "" )
+				{
+					previewElem.href = item.preview;
+					previewElem.classList.remove("hidden");
+				}
+
+				var streamElem = document.querySelector("#stream");
+				streamElem.classList.add("hidden");
+				if( !!item.stream && item.stream !== "" )
+				{
+					streamElem.href = item.stream;
+					streamElem.classList.remove("hidden");
+				}
+
+				var referenceElem = document.querySelector("#reference");
+				referenceElem.classList.add("hidden");
+				if( !!item.reference && item.reference !== "" )
+				{
+					referenceElem.href = item.reference;
+					referenceElem.classList.remove("hidden");
+				}
+
+				var downloadElem = document.querySelector("#download");
+				downloadElem.classList.add("hidden");
+				if( !!item.download && item.download !== "" )
+				{
+					downloadElem.href = item.download;
+					downloadElem.classList.remove("hidden");
+				}
+
+				var nolaunchElem = document.querySelector("#nolaunch");
+				nolaunchElem.classList.add("hidden");
+
+				var fileimageElem = document.querySelector("#fileimage");
+				fileimageElem.classList.add("hidden");
+
+				var fileElem = document.querySelector("#file");
+				fileElem.classList.add("hidden");
+				if( item.file.indexOf("/") != -1 )
+				{
+					fileElem.href = item.file;
+					fileElem.classList.remove("hidden");
+					fileElem.innerHTML = "Launch Shortcut - <font class='link'>" + item.file + "</font>";
+
+					fileimageElem.src = item.file;
+				}
+				else
+					nolaunchElem.classList.remove("hidden");
+			}
+
+			function loaded(elem)
+			{
+				elem.classList.remove("hidden");
+			}
+		</script>
+	</head>
+	<body>
+		<form id="form">
+			JSON: <input type="text" id="jsonbox" autocomplete="off" placeholder="(Paste your MSF JSON here.)" /><input type="submit" value="Process MSF JSON" />
+		</form>
+		<hr />
+		<img id="fileimage" class="hidden" onload="loaded(this);" />
+		<img id="screen" class="hidden" onload="loaded(this);" />
+		<img id="marquee" class="hidden" onload="loaded(this);" />
+		<div id="title"></div>
+		<div id="type"></div>
+		<div id="description"></div>
+		<a id="preview" class="hidden" target="_blank">View Preview</a>
+		<a id="stream" class="hidden" target="_blank">View Stream</a>
+		<a id="reference" class="hidden" target="_blank">View Reference</a>
+		<a id="download" class="hidden" target="_blank">View Download</a>
+		<a id="file" class="hidden" target="_blank">Launch Shortcut</a>
+		<div id="nolaunch" class="hidden" target="_blank">This shortcut references a local file.  The user is probably expected to resolve this shortcut's file target to a local file on their PC, or otherwise specify a file target that works for them in order to launch it.</div>
+
+		<script>
+			document.querySelector("#form").addEventListener("submit", function(e)
+			{
+				if( !!document.activeElement && typeof document.activeElement.blur === "function" )
+					document.activeElement.blur();
+
+				processMSF();
+				e.preventDefault();
+			});
+
+			var jsonbox = document.querySelector("#jsonbox");
+			jsonbox.addEventListener("focus", function(e)
+			{
+				e.target.select();
+			});
+			jsonbox.focus();
+		</script>
+
+		<style>
+			#jsonbox
+			{
+				width: 800px;
+			}
+
+			#title
+			{
+				font-size: 20pt;
+			}
+
+			#type
+			{
+				font-style: italic;
+				font-size: 12pt;
+				margin-bottom: 8px;
+			}
+
+			#description
+			{
+				width: 800px;
+				margin-bottom: 8px;
+			}
+
+			#download, #nolaunch, #preview, #stream, #reference, #file
+			{
+				display: block;
+				margin: 4px;
+				padding: 8px;
+				width: 800px;
+				border-radius: 8px;
+				border: 1px solid rgb(40, 40, 40);
+			}
+
+			#download:hover, #preview:hover, #stream:hover, #reference:hover, #file:hover
+			{
+				background-color: rgb(240, 240, 240);
+			}
+
+			#screen, #marquee, #fileimage
+			{
+				max-width: 200px;
+				max-height: 100px;
+			}
+
+			a
+			{
+				text-decoration: none;
+				font-weight: bold;
+				font-family: Arial;
+			}
+
+			.hidden
+			{
+				display: none !important;
+			}
+		</style>
+	</body>
+</html>
