@@ -1,4 +1,4 @@
-# Meta Shortcut Format
+# Meta Shortcut Format (standard flat)
 
 - **title**: (string) the name of the shortcut
 - **file**: (string) the file target of the shortcut
