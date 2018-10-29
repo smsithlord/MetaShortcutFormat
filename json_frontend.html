@@ -113,7 +113,7 @@
 				displayItem(item);
 
 				// update the URL for easy link sharing
-				history.pushState({}, document.title, "?json=" + JSON.stringify(item));
+				history.replaceState({}, document.title, "?json=" + JSON.stringify(item));
 			}
 
 			var form = document.querySelector("#form");
@@ -150,12 +150,16 @@
 				return decodeURIComponent(results[2].replace(/\+/g, " "));
 			}
 
-			var givenJSON = getParameterByName("json");
-			if( !!givenJSON )
+			function checkForJSON()
 			{
-				jsonbox.value = givenJSON;
-				submitForm();
+				var givenJSON = getParameterByName("json");
+				if( !!givenJSON )
+				{
+					jsonbox.value = givenJSON;
+					submitForm();
+				}
 			}
+			checkForJSON();
 		</script>
 
 		<style>
