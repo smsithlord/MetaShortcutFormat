@@ -4,8 +4,13 @@
 		<script>
 			function processMSF()
 			{
+				// parse the user's JSON string into an object
 				var item = JSON.parse(document.querySelector("#jsonbox").value);
+				return item;
+			}
 
+			function displayItem(item)
+			{
 				// now display the item's meta data to the user
 				document.querySelector("#title").innerHTML = item.title;
 				document.querySelector("#type").innerHTML = (!!item.type) ? item.type : "other";
@@ -98,12 +103,23 @@
 		<div id="nolaunch" class="hidden" target="_blank">This shortcut references a local file.  The user is probably expected to resolve this shortcut's file target to a local file on their PC, or otherwise specify a file target that works for them in order to launch it.</div>
 
 		<script>
-			document.querySelector("#form").addEventListener("submit", function(e)
+			function submitForm()
 			{
 				if( !!document.activeElement && typeof document.activeElement.blur === "function" )
 					document.activeElement.blur();
 
-				processMSF();
+				// process & display the MSF item
+				var item = processMSF();
+				displayItem(item);
+
+				// update the URL for easy link sharing
+				history.pushState({}, document.title, "?json=" + JSON.stringify(item));
+			}
+
+			var form = document.querySelector("#form");
+			form.addEventListener("submit", function(e)
+			{
+				submitForm();
 				e.preventDefault();
 			});
 
@@ -113,6 +129,33 @@
 				e.target.select();
 			});
 			jsonbox.focus();
+
+			function getParameterByName(name, url)
+			{
+				// method from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+				if (!url)
+					url = window.location.href;
+
+				name = name.replace(/[\[\]]/g, "\\$&");
+
+				var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+
+				if (!results)
+					return null;
+
+				if (!results[2])
+					return '';
+
+				return decodeURIComponent(results[2].replace(/\+/g, " "));
+			}
+
+			var givenJSON = getParameterByName("json");
+			if( !!givenJSON )
+			{
+				jsonbox.value = givenJSON;
+				submitForm();
+			}
 		</script>
 
 		<style>
