@@ -90,7 +90,7 @@ Tags are completely arbitrary and used only to provide additional search & filte
 {"title":"▶ Botnit - Hi-Score","file":"https://www.youtube.com/watch?v=8wDrUPlo15M","screen":"http://img.youtube.com/vi/8wDrUPlo15M/0.jpg","description":"Reupload of the classic Maniac Synth video","type":"youtube"}
 ```
 ```javascript
-{"title":"The Simpsons","file":"https://www.hulu.com/the-simpsons","screen":"http://a248.e.akamai.net/ib.huluim.com/show_key_art/58?size=1280x720","marquee":"http://assetshuluimcom-a.akamaihd.net/h2o/facebook_share_thumb_default_hulu.png","stream":"https://www.hulu.com/the-simpsons","description":"Watch The Simpsons online. Stream episodes and clips of The Simpsons instantly.","type":"tv"}
+{"title":"The Simpsons","file":"https://www.hulu.com/the-simpsons","screen":"http://a248.e.akamai.net/ib.huluim.com/show_key_art/58?size=1280x720","marquee":"http://assetshuluimcom-a.akamaihd.net/h2o/facebook_share_thumb_default_hulu.png","description":"Watch The Simpsons online. Stream episodes and clips of The Simpsons instantly.","keywords":"homer, bart","type":"tv"}
 ```
 ```javascript
 {"title":"Purple Trees","file":"https://kosmetista.ru/uploads/images/07/04/95/2015/06/11/82c72c.jpg","type":"images"}
