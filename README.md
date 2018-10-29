@@ -72,6 +72,7 @@ Tags are completely arbitrary and used only to provide additional search & filte
 
 ## Live 2D Frontend Example
 Here is a live example of a frontend using MSF items encoded with JSON.  Just paste in the JSON examples (listed below in the *MSF JSON Examples* section) and hit enter.
+
 https://smsithlord.github.io/MetaShortcutFormat/json_frontend.html
 
 ## MSF JSON Examples
