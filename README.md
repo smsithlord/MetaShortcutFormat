@@ -2,7 +2,7 @@
 
 - **title**: (string) the name of the shortcut
 - **file**: (string) the file target of the shortcut
-- **screen**: (string) the image to use on the shortut's screen
+- **screen**: (string) the image to use on the shortcut's screen
 - **marquee**: (string) the image to use on the shortcut's marquee
 - **preview**: (string) an addition file target to show as a preview
 - **reference**: (string) a URL to an arbitrary online database entry related to this shortcut
@@ -22,9 +22,9 @@ This format specification is to help 2D & 3D frontends dynamically generate rich
 ## Purpose
 The Meta Shortcut Format (MSF) was developed out of necessity over the past 10 years by myself (SM Sith Lord) based heavily on feedback from users of my 3D metaverse browser Anarchy Arcade.
 
-A meta shortcut is very much like a regular desktop shortcut, but with a few extra fileds that **(1)** make it suitable to represent mixed web/local shortcuts, **(2)** make it far more capable of generating a rich presence for itself within a 2D or 3D environment, and **(3)** provide enough meta data for shortcuts to be used in a mutliplayer environment effectively.
+A meta shortcut is very much like a regular desktop shortcut, but with a few extra fields that **(1)** make it suitable to represent mixed web/local shortcuts, **(2)** make it far more capable of generating a rich presence for itself within a 2D or 3D environment, and **(3)** provide enough meta data for shortcuts to be used in a multiplayer environment effectively.
 
-Meta shorcuts are engine agnostic.  They are purely a way to represent shortcut meta data.
+Meta shortcuts are engine agnostic.  They are purely a way to represent shortcut meta data.
 
 ## Scope
 Meta shortcuts hold plain-text meta data only.  No binary data.  The only required field is FILE.  The other fields may be left blank.  The amount of meta data present in a shortcut will determine how well its rich presence will be in the interactive 2D or 3D environment.
@@ -33,7 +33,7 @@ Meta shortcuts hold plain-text meta data only.  No binary data.  The only requir
 The MSF can be encoded by any appropriate method (JSON, XML, etc.) as long as the meta data is retained.  The most basic MSF is flat & contains only plain-text string fields.  Note that there is also a deep variant that provides extended support for the OPEN WITH and TYPE fields as well as a way to specify what kind of 3D model the shortcut would like to be displayed on, but the specification in this document is for the standard flat variant only.
 
 ## Values
-All feild values are strings.  Frontends should support at least 2048 characters in each field, but may support much more if they wish.  The following fields expect plain-text: Title, Description, Tags, Type, Open With.  Conversly, the other fields expect either a local file target or a URL: File, Screen, Marquee, Preview, Stream, Download, Reference.  If a particular field does not exist in a shortcut, it is assumed to be the default value of an empty string.
+All field values are strings.  Frontends should support at least 2048 characters in each field, but may support much more if they wish.  The following fields expect plain-text: Title, Description, Tags, Type, Open With.  Conversely, the other fields expect either a local file target or a URL: File, Screen, Marquee, Preview, Stream, Download, Reference.  If a particular field does not exist in a shortcut, it is assumed to be the default value of an empty string.
 
 ## Security & Privacy
 When a user shares a meta shortcut that has references to local files in its meta data, it is common practice to conceal the user's local folder structure by removing all but the file name from the field's value.
@@ -53,7 +53,7 @@ You are free to determine what the best in-game interactive preview priority is 
 - **preview** field, if valid.
 - **file** field, if valid.
 - **screen** field, if valid.
-- **marqruee** field, if valid.
+- **marquee** field, if valid.
 - **reference** field, if valid.
 
 Note that you may also want to alter priority based on keywords found in those field values, such as "youtube.com" or "netflix.com".  How you prioritize your in-game interactive previews is entirely up to you.  Do what ever makes sense for your frontend.
@@ -65,10 +65,10 @@ Metaverse types are arbitrary.  Users can create their own "types" and name them
 ## Open-With Apps
 In standard flat MSF, the **app** field contains the name of a program that is assumed to be required to open the shortcut with.  This is an arbitrary value that is usually absent or just an empty string.  Common values for this field include the names of emulators, such as Project 64 or SNES9x.  In standard flat MSF, this **app** field is merely a hint to the user that they might need additional software to launch the shortcut.  (Note that in the deep variant of MSF, the **app** field is able to play a much more functional role.)
 
-When an **app** field is absent or an empty string, it means the shortcut needs no special handling.  In other words, if you pasted the shortcut target into the Windows Run dialoge, it would open successfully in a native app automatically.
+When an **app** field is absent or an empty string, it means the shortcut needs no special handling.  In other words, if you pasted the shortcut target into the Windows Run dialog, it would open successfully in a native app automatically.
 
 ## Tags
-Tags are completely arbitrary and used only to provide additional search & filter posibilities to your frontend.
+Tags are completely arbitrary and used only to provide additional search & filter possibilities to your frontend.
 
 ## Live 2D Frontend Example
 Here is a live example of a frontend using MSF items encoded with JSON.  Just paste in the JSON examples (listed below in the *MSF JSON Examples* section) and hit enter.
